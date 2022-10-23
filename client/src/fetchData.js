@@ -38,4 +38,18 @@ const postRegisteredUser = async (url, { name, email, password }) => {
   });
 };
 
-export { fetchData, postLoginUser, postRegisteredUser };
+const removeBookFromColl = async (url, { username, bookId, token }) => {
+  return await fetch(url, {
+    method: "PUT",
+    mode: "cors",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: token,
+    },
+    body: JSON.stringify({ username: username, bookId: bookId }),
+  })
+    .then((res) => res.json())
+    .then((res) => console.log(res));
+};
+
+export { fetchData, postLoginUser, postRegisteredUser, removeBookFromColl };

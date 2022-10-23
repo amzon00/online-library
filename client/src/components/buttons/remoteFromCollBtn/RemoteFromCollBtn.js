@@ -1,42 +1,32 @@
 import "./RemoteFromCollBtn.css";
+import { removeBookFromColl } from "../../../fetchData";
 import { RiDeleteBin2Fill } from "react-icons/ri";
 import { IconContext } from "react-icons";
 import { useParams } from "react-router";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 function RemoteFromCollBtn(props) {
-  const [state, setState] = useState({});
+  const navigate = useNavigate();
   const params = useParams();
   const username = params.username;
+  const bookId = props.id;
   const token = localStorage.getItem("token");
+  const [state, setState] = useState({});
 
-  useEffect(() => {
-    setState();
-  }, []);
-
-  const removeBookFromColl = async () => {
-    console.log(`removeing book with id ${props.id}`);
-
-    return await fetch(
+  const handleClick = async () => {
+    removeBookFromColl(
       `http://localhost:8000/api/v1/user/${username}/collection`,
-      {
-        method: "PUT",
-        mode: "cors",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: token,
-        },
-        body: JSON.stringify({ username: username, bookId: props.id }),
-      }
-    )
-      .then((res) => res.json())
-      .then((res) => console.log(res));
+      { username, bookId, token }
+    );
+    navigate(0); // to refresh the page.. temporary until i figure out how to implement useEffect
   };
 
+  useEffect(() => {}, []);
   return (
     <IconContext.Provider value={{ className: "deleteIcon" }}>
       <div>
-        <RiDeleteBin2Fill onClick={removeBookFromColl} />
+        <RiDeleteBin2Fill onClick={handleClick} />
       </div>
     </IconContext.Provider>
   );
