@@ -18,8 +18,4 @@ const addToCollection = async (req, res) => {
   res.status(StatusCodes.OK).json({ user: user });
 };
 
-const deleteFromCollection = async (req, res) => {
-  console.log(req.body);
-};
-
-module.exports = { addToCollection, deleteFromCollection };
+module.exports = addToCollection;

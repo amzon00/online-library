@@ -18,4 +18,14 @@ const getUserCollection = async (req, res) => {
   res.status(StatusCodes.OK).json({ user: user });
 };
 
-module.exports = getUserCollection;
+const deleteFromCollection = async (req, res) => {
+  const { username: username, bookId: bookId } = req.body;
+  const user = await User.update(
+    { name: username },
+    { $pull: { bookCollection: { id: bookId } } }
+  );
+  console.log(user);
+  res.status(StatusCodes.OK).json({});
+};
+
+module.exports = { getUserCollection, deleteFromCollection };

@@ -10,20 +10,13 @@ const {
   getBook,
 } = require("../controllers/books");
 
-const {
-  addToCollection,
-  deleteFromCollection,
-} = require("../controllers/booksCollection");
+const { getUserCollection } = require("../controllers/getUserCollection");
 
-const getUserCollection = require("../controllers/getUserCollection");
+const addToCollection = require("../controllers/booksCollection");
 
 router.route("/").get(getAllBooks); //.post(createBook);
 router.route("/user/collection").get(getUserCollection);
-
 router.route("/:id").get(getBook); //.delete(deleteBook).patch(updateBook);
-router
-  .route("/user/:username")
-  .post(addToCollection)
-  .delete(deleteFromCollection);
+router.route("/user/:username").post(addToCollection);
 
 module.exports = router;

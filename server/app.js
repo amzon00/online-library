@@ -8,8 +8,7 @@ const authenticateUser = require("./middleware/authentication");
 //routers
 const booksRouter = require("./routes/books");
 const authRouter = require("./routes/auth");
-const getUserCollection = require("./routes/collection");
-const deleteFromCollection = require("./routes/collection");
+const userCollection = require("./routes/collection");
 
 const port = process.env.PORT || 8000;
 
@@ -18,7 +17,7 @@ app.use(express.json());
 
 app.use("/api/v1/books", booksRouter); // authenticateUser // needs to be inserted before accessing each persons collection
 app.use("/api/v1/auth", authRouter);
-app.use("/api/v1/user", [deleteFromCollection, getUserCollection]);
+app.use("/api/v1/user", userCollection);
 // deleteFromCollection
 const start = async () => {
   try {
