@@ -1,6 +1,7 @@
 const express = require("express");
 
 const router = express.Router();
+
 const {
   createBook,
   deleteBook,
@@ -9,12 +10,20 @@ const {
   getBook,
 } = require("../controllers/books");
 
-const addToCollection = require("../controllers/booksCollection");
+const {
+  addToCollection,
+  deleteFromCollection,
+} = require("../controllers/booksCollection");
+
 const getUserCollection = require("../controllers/getUserCollection");
 
-router.route("/").get(getAllBooks).post(createBook);
+router.route("/").get(getAllBooks); //.post(createBook);
 router.route("/user/collection").get(getUserCollection);
-router.route("/:id").get(getBook).delete(deleteBook).patch(updateBook);
-router.route("/user/:username").post(addToCollection);
+
+router.route("/:id").get(getBook); //.delete(deleteBook).patch(updateBook);
+router
+  .route("/user/:username")
+  .post(addToCollection)
+  .delete(deleteFromCollection);
 
 module.exports = router;

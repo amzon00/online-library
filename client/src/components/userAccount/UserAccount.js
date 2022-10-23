@@ -1,4 +1,3 @@
-import Main from "../main/Main";
 import { useState, useEffect } from "react";
 import { fetchData } from "../../fetchData";
 import { useParams } from "react-router";
@@ -29,7 +28,14 @@ function UserAccount() {
       <div className="container-main">
         {Object.keys(data).length !== 0 ? (
           data.user.bookCollection.map((book, index) => {
-            return <Book key={index} cover={book.cover} title={book.title} />;
+            return (
+              <Book
+                key={index}
+                cover={book.cover}
+                title={book.title}
+                id={book.id}
+              />
+            );
           })
         ) : (
           <h1>Loading...</h1>
