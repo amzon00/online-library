@@ -1,0 +1,11 @@
+.container-main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /* border: 2px solid; */
+    margin: 3em;
+    row-gap: 60px;
+    column-gap: 30px;
+    padding-bottom: 10em;
+}

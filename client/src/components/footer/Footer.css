@@ -1,0 +1,14 @@
+.footer {
+    display:flex;
+    /* position:relative; */
+    bottom:0;
+    width: 100%;
+    justify-content: flex-end;
+    padding: 5em;
+    background: linear-gradient(
+      35deg,
+      rgba(131, 58, 180, 1) 0%,
+      rgba(253, 29, 29, 1) 50%,
+      rgba(252, 176, 69, 1) 100%
+    );
+}

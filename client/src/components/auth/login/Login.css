@@ -1,0 +1,14 @@
+.form {
+    display: inline-flex;
+    float: right;
+}
+
+.password-input {
+    margin-left: 1em;
+}
+
+.submit-button {
+    margin-left: 1em;
+}
+
+

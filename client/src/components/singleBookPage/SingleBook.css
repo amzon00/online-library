@@ -1,0 +1,24 @@
+.book-container {
+    display: inline-flex;
+    width: 95%;
+    flex-direction: row;
+    gap: 5em;
+    padding-bottom: 20em;
+}
+
+.book-cover {
+    order: 1;
+    display: flex;
+    width: 20em;
+    height: 30em;
+    margin-top: 5em;
+    align-self:flex-start
+}
+
+.book-details {
+    order: 2;
+    margin-top: 10%;
+
+}
+
+
