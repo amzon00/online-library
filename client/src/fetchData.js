@@ -47,9 +47,7 @@ const removeBookFromColl = async (url, { username, bookId, token }) => {
       Authorization: token,
     },
     body: JSON.stringify({ username: username, bookId: bookId }),
-  })
-    .then((res) => res.json())
-    .then((res) => console.log(res));
+  });
 };
 
 export { fetchData, postLoginUser, postRegisteredUser, removeBookFromColl };

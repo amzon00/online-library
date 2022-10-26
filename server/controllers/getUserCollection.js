@@ -20,12 +20,22 @@ const getUserCollection = async (req, res) => {
 
 const deleteFromCollection = async (req, res) => {
   const { username: username, bookId: bookId } = req.body;
-  const user = await User.update(
+  await User.updateOne(
     { name: username },
     { $pull: { bookCollection: { id: bookId } } }
   );
-  console.log(user);
-  res.status(StatusCodes.OK).json({});
+
+  const size = await User.aggregate([
+    // { $project: { count: { $size: "$bookCollection" } } },
+    {
+      $group: {
+        _id: username,
+        totalSize: { $sum: { $sum: "$bookCollection" } }, // <--- what does it return ??
+      },
+    },
+  ]);
+  console.log(size);
+  res.status(StatusCodes.OK).json({ size });
 };
 
 module.exports = { getUserCollection, deleteFromCollection };

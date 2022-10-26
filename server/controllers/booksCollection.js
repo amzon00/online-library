@@ -2,7 +2,7 @@ const User = require("../models/User");
 const { StatusCodes } = require("http-status-codes");
 
 const addToCollection = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const user = await User.findOneAndUpdate(
     { name: req.body.name },
     {

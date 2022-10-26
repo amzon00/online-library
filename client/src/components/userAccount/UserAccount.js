@@ -8,18 +8,18 @@ function UserAccount() {
   const params = useParams();
   const username = params.username;
 
-  const fetch = fetchData(
-    `http://localhost:8000/api/v1/user/${username}/collection`
-  );
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
+  const [collLength, setCollLength] = useState(0);
 
   useEffect(() => {
-    fetch.then((res) => {
-      setData(res);
-    });
-  }, []);
+    fetchData(`http://localhost:8000/api/v1/user/${username}/collection`).then(
+      (res) => {
+        setData(res);
+      }
+    );
+  }, [collLength]);
 
-  // console.log(data);
+  // console.log(collLength);
   // console.log(localStorage.length);
 
   return (
@@ -34,6 +34,7 @@ function UserAccount() {
                 cover={book.cover}
                 title={book.title}
                 id={book.id}
+                setCollLength={setCollLength}
               />
             );
           })

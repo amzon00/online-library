@@ -18,7 +18,7 @@ app.use(express.json());
 app.use("/api/v1/books", booksRouter); // authenticateUser // needs to be inserted before accessing each persons collection
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/user", userCollection);
-// deleteFromCollection
+
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI);

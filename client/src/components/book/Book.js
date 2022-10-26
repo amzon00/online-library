@@ -4,6 +4,7 @@ import RemoteFromCollBtn from "../buttons/remoteFromCollBtn/RemoteFromCollBtn";
 
 function Book(props) {
   // console.log(props);
+
   return (
     <div className="individual-book">
       <img src={props.cover}></img>
@@ -11,7 +12,7 @@ function Book(props) {
       {props.author ? (
         <GoToBookBtn id={props.id} />
       ) : (
-        <RemoteFromCollBtn id={props.id} />
+        <RemoteFromCollBtn id={props.id} setCollLength={props.setCollLength} />
       )}
     </div>
   );
